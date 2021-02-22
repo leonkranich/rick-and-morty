@@ -5,20 +5,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      characters: []
+      characters: [],
+      charInfo: []
      }
   }
 
   componentDidMount() {
-    this.allCharacters();
+    this.Characters();
   }
 
-  allCharacters() {
+  Characters() {
     const apiEndpoint = `https://rickandmortyapi.com/api/character`
     fetch(apiEndpoint).then(response => response.json()).then((data) => {
-      console.log(data.results);
       this.setState({
-        characters: data.results
+        characters: data.results,
+        charInfo: data.info
       })
     })
   }
@@ -26,7 +27,7 @@ class App extends Component {
   render() { 
     return ( 
       <div>
-        <CharacterList characters={this.state.characters} />
+        <CharacterList characters={this.state.characters} charInfo={this.state.charInfo}/>
       </div>
      );
   }

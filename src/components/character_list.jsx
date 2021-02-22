@@ -2,6 +2,7 @@ import React from 'react';
 import Character from './character';
 
 const CharacterList = (props) => {
+  console.log(props.charInfo.next);
   const renderList = () => {
     return props.characters.map((character, index) => {
       return (
@@ -12,13 +13,16 @@ const CharacterList = (props) => {
       );
     });
   };
+  
 
   return (
     <div className="character-list">
       {renderList()}
+      <button>Load More</button>
     </div>
   );
 };
 
 export default CharacterList;
+
 
